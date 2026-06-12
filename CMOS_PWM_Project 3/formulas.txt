@@ -1,0 +1,115 @@
+
+Core PWM formula
+
+The pulse width is set by charging/discharging a timing capacitor with the reference current Iref.
+
+Capacitor equation:
+Iref = Ctimer * dV/dt
+
+Therefore:
+dV/dt = Iref / Ctimer
+
+Pulse width:
+tpulse = Ctimer * DeltaV / Iref
+
+Chosen values:
+Ctimer = 4.5 pF
+DeltaV = 1 V
+
+For Iref = 9 uA:
+tpulse = 4.5 pF * 1 V / 9 uA = 0.5 us
+
+For Iref = 1 uA:
+tpulse = 4.5 pF * 1 V / 1 uA = 4.5 us
+
+Thus:
+tpulse is proportional to 1/Iref
+
+Clock:
+fclk = 100 kHz
+Tclk = 10 us
+
+Both rising and falling edges are detected:
+fpwm = 2 * fclk = 200 kHz
+
+
+PART 1 - Core PWM
+
+The core PWM circuit converts the reference current Iref into a pulse width.
+A larger current charges/discharges the timing capacitor faster, so the pulse becomes shorter.
+A smaller current gives a slower slope, so the pulse becomes wider.
+
+Main formula:
+tpulse = Ctimer * DeltaV / Iref
+
+
+PART 2 - 5-bit Digital-to-Pulse-Width Converter
+
+The digital code controls the effective capacitance connected to the ramp node.
+
+Binary weighted capacitors:
+Ccode = b0*100 fF + b1*200 fF + b2*400 fF + b3*800 fF + b4*1.6 pF
+
+With Iref fixed to 1 uA:
+dV/dt = Iref / Ccode
+
+Pulse width:
+tpulse = Ccode * DeltaV / Iref
+
+A larger digital code connects more capacitance.
+More capacitance gives a slower ramp and therefore a wider pulse.
+
+Required codes tested:
+00001, 00010, 00100, 11111
+(small endian notation)
+
+
+PART 3 - Sawtooth Generator
+
+The sawtooth is made by charging/discharging a capacitor with a controlled current and resetting it periodically.
+
+Capacitor equation:
+I = Csaw * dV/dt
+
+Ramp slope:
+dV/dt = I / Csaw
+
+Sawtooth period:
+Tsaw = Csaw * DeltaV / I
+
+The sawtooth amplitude is designed to span approximately 0 V to 2 V, independent of Iref.
+
+
+PART 4 - Voltage-to-Pulse-Width Converter
+
+The voltage-to-pulse-width converter uses a falling ramp Vtime and compares it with Vref.
+
+Ramp equation:
+Vtime(t) = VDD - (Iref/C3)*t
+
+The pulse ends when:
+Vtime = Vref
+
+Therefore:
+Vref = VDD - (Iref/C3)*tpulse
+
+Pulse width:
+tpulse = (C3/Iref) * (VDD - Vref)
+
+Chosen values:
+VDD = 3.3 V
+Iref = 1 uA
+C3 = 2.5 pF
+
+So:
+C3/Iref = 2.5 us/V
+
+Final formula:
+tpulse = 2.5 us/V * (3.3 V - Vref)
+
+Verification:
+Vref = 3.1 V -> tpulse = 0.5 us
+Vref = 2.7 V -> tpulse = 1.5 us
+Vref = 2.3 V -> tpulse = 2.5 us
+Vref = 1.9 V -> tpulse = 3.5 us
+Vref = 1.5 V -> tpulse = 4.5 us
