@@ -1,0 +1,45 @@
+LTspice 26.0.2 for MacOS
+Circuit: /Users/laurent/Desktop/Q3/Analog electronics/project/FINAL_PROJECT_LAURENT/LTspice/final_project_noise.net
+Start Time: Sat Aug  1 14:41:17 2026
+solver = Normal
+Maximum thread count: 16
+tnom = 27
+temp = 27
+method = trap
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning:  Acde = 0.0146993 is too small.
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning:  Acde = 0.0146993 is too small.
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning:  Acde = 0.0146993 is too small.
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Warning: No WPE as none of SCA, SCB, SCC, SC is given and/or SC not positive.
+Warning: LTspice uses BSIM4 version 4.6.1. Your model specified an unrecognized version number: 4.5000e+00
+Direct Newton iteration succeeded in finding operating point.
+Total elapsed time: 0.139 seconds.
+
+Files loaded:
+/Users/laurent/Desktop/Q3/Analog electronics/project/FINAL_PROJECT_LAURENT/LTspice/final_project_noise.net
+/Users/laurent/Library/Application Support/LTspice/Bottles/ltspice/drive_c/users/crossover/AppData/Local/LTspice/lib/cmp/standard.mos
+/Users/laurent/Desktop/Q3/Analog electronics/project/FINAL_PROJECT_LAURENT/LTspice/BSIM4_UMC65.lib
+
+out_totnvrms: INTEG(V(onoise) )=6.28137907659e-05 FROM 10000 TO 800000000
+out_mp1nvrms: INTEG(V(mp1) )=2.02235482769e-05 FROM 10000 TO 800000000
+out_mp2nvrms: INTEG(V(mp2) )=2.02746428659e-05 FROM 10000 TO 800000000
+out_mp7nvrms: INTEG(V(mp7) )=2.32779619373e-06 FROM 10000 TO 800000000
+out_mp8nvrms: INTEG(V(mp8) )=6.21860342684e-06 FROM 10000 TO 800000000
+out_mp5nvrms: INTEG(V(mp5) )=1.54146043545e-06 FROM 10000 TO 800000000
+out_mn6nvrms: INTEG(V(mn6) )=5.16816023944e-06 FROM 10000 TO 800000000
+out_mn4nvrms: INTEG(V(mn4) )=3.93633125585e-05 FROM 10000 TO 800000000
+out_mn3nvrms: INTEG(V(mn3) )=3.59774137402e-05 FROM 10000 TO 800000000
+out_rmnvrms: INTEG(V(rm) )=1.44340382804e-05 FROM 10000 TO 800000000
